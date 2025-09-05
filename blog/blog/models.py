@@ -1,9 +1,15 @@
+# users/models.py
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.contrib.auth.models import User
-# Create your models here.
+class User(AbstractUser):
+    email = models.EmailField(unique=True)
 
-class blogs(models.Model):
-    title = models.CharField(max_lenght=200)
+    def __str__(self):
+        return self.username
+
+
+class blog(models.Model):
+    title = models.CharField()
     body = models.TextField()
 
 class Post(models.Model):
