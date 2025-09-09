@@ -1,4 +1,6 @@
 from django.urls import path
+from django.urls import path
+from .views import PostListCreateView, PostDetailView, CommentListCreateView
 from rest_framework.authtoken.views import obtain_auth_token
 from .views import PostListCreateView, PostDetailView
 from rest_framework_simplejwt.views import (
@@ -12,6 +14,6 @@ urlpatterns = [
     path("posts/", PostListCreateView.as_view(), name="post-list-create"),
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-
+    path("comments/", CommentListCreateView.as_view(), name="comment-list"),
 
 ]
