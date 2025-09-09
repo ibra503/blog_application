@@ -4,6 +4,8 @@ from .models import Post, Comment
 from .serializers import PostSerializer
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
+from .serializers import UserSerializer
+from rest_framework import generics
 
 class PostListCreateView(generics.ListCreateAPIView):
     queryset = Post.objects.all()
@@ -39,9 +41,13 @@ class CommentListCreateView(generics.ListCreateAPIView):
 class PostListCreateView(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # <- only logged-in users can create
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  
 
 class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # <- same here
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly] 
+    
+class UserRegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
