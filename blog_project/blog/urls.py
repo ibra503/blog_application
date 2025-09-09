@@ -7,6 +7,13 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from .views import (
+    PostListCreateView,
+    PostDetailView,
+    CommentListCreateView,
+    UserRegisterView,   # <-- add this
+)
+
 urlpatterns = [
     path('posts/', PostListCreateView.as_view(), name='post-list'),
     path('posts/<int:pk>/', PostDetailView.as_view(), name='post-detail'),

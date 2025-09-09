@@ -16,11 +16,10 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ["id", "title", "content", "author"]
 
-class CommeializerntSer(serializers.ModelSerializer):
+class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
-
+        fields = "__all__"
 User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
